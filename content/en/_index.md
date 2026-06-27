@@ -11,6 +11,7 @@ title: 3827992 Canada Inc
   GnitoApp.com <i class="fas fa-arrow-alt-circle-right ms-2"></i>
 </a>
 <p class="lead mt-5">We develop applications for the web, Windows, MacOS, Linux, iOS, and Android!</p>
+<p class="lead mt-5"><a href="https://ised-isde.canada.ca/cc/lgcy/fdrlCrpDtls.html?p=0&corpId=3827992&crpNm=&crpNmbr=3827992&bsNmbr=&cProv=&cStatus=&cAct=">Corporations Canada Listing</p>
 {{< blocks/link-down color="info" >}}
 {{< /blocks/cover >}}
 
