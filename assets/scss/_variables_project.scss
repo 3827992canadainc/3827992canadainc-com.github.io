@@ -1,5 +1,18 @@
 /*
-
-Add styles or override variables from the theme here.
-
+  Docsy imports this file BEFORE the theme's own styles, so it is for variables
+  only. CSS rules written here lose to equal-specificity theme rules - put them
+  in _styles_project.scss instead.
 */
+
+/*
+  Brand accents.
+
+  Docsy 0.11 shipped warm defaults ($secondary: #ffa630, $info: #c0e0de) that the
+  home page's product buttons and the cover's scroll-down circle relied on.
+  Docsy 0.16+ uses plain Bootstrap defaults ($gray-600 / $cyan), which turned
+  those elements grey and bright cyan. Restore the two accents the site uses;
+  the rest of the palette deliberately follows the theme (and its dark-mode
+  contrast adjustments).
+*/
+$secondary: #ffa630;
+$info: #c0e0de;

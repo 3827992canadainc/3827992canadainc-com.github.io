@@ -1,0 +1,73 @@
+/*
+  Project CSS rules. Docsy imports this file LAST (see the theme's td/_main.scss),
+  so rules here win against theme rules of equal specificity - unlike the same
+  rules placed in _variables_project.scss, which is imported before Bootstrap.
+*/
+
+/* Light/dark Chroma styles for class-based highlighting (`markup.highlight.noClasses:
+   false`). Docsy ships them but does not import them by default; without this the
+   code blocks have no background and inherit the page text colour. */
+@import 'td/code-dark';
+
+/*
+  Project-level additions on top of the Docsy theme.
+
+  Keep this file limited to what the theme cannot express as parameters. The
+  rules below mirror the sibling site (gnitoapp.com) so both sites render the
+  same; the product-page rules that site needs do not apply here.
+*/
+
+/*
+  Fixed navbar offset.
+
+  Docsy's navbar is `position: fixed` from the `md` breakpoint up. The theme
+  derives the offset from `--td-main-padding-top`; pinning the same values here
+  keeps this site's page spacing identical to the sibling site's and to the
+  theme default. The home page is left alone - its cover block positions itself.
+*/
+body:not(.td-home) main.td-main {
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  body:not(.td-home) main.td-main {
+    padding-top: 5.5rem;
+  }
+}
+
+/*
+  Mobile navbar: Docsy renders the main nav as a fixed-height (2.5rem) row with
+  `overflow-x: auto`, so an absolutely positioned dropdown would be clipped to
+  that row. Let the row grow and stop clipping below the `md` breakpoint; the
+  theme's scroll indicators are hidden because horizontal scrolling is no longer
+  used there. Needed by the navbar override's dropdown support.
+*/
+@media (max-width: 991.98px) {
+  // Specificity matters: the theme's rule is `.td-navbar .td-navbar-nav-scroll`
+  // inside `media-breakpoint-down(lg)` and sets `overflow: hidden`.
+  .td-navbar .td-navbar-nav-scroll {
+    height: auto;
+    overflow: visible;
+
+    .scroll-indicator {
+      display: none;
+    }
+  }
+
+  // The theme also sets `overflow-x: auto` on the list, which would clip the
+  // menu a second time.
+  .td-navbar .navbar-nav {
+    flex-wrap: wrap;
+    height: auto;
+    overflow: visible;
+    row-gap: 0.25rem;
+  }
+}
+
+/* Navbar mark rendered from assets/icons/logo.png (see the navbar override). */
+.navbar-logo__img {
+  width: auto;
+  height: 30px;
+  border-radius: 0.35rem;
+}

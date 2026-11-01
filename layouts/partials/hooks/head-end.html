@@ -1,0 +1,26 @@
+{{- /*
+  Dark theme, set before the first paint, plus the canonical URL.
+
+  This used to live in a local copy of Docsy's baseof.html, which had drifted
+  from the theme (wrong wrapper classes) and placed the script after </body>.
+  Doing it in the theme's head hook keeps the theme's own base template and
+  avoids the light-theme flash. If the site should ever offer a toggle, replace
+  this with Docsy's params.ui.showLightDarkModeMenu and a persisted preference.
+*/ -}}
+<script>
+  document.documentElement.setAttribute("data-bs-theme", "dark");
+</script>
+{{- /*
+  Canonical URL for every indexable page.
+
+  Do not drop this. The site also answers on www.3827992canadainc.com and
+  3827992canadainc-com.github.io, so published pages would otherwise advertise
+  ambiguous URLs.
+
+  Skipped for the 404 page and for the `print` output, which Docsy already
+  gives its own canonical link.
+*/ -}}
+{{- $outputFormat := partial "outputformat.html" . -}}
+{{- if and (ne .Kind "404") (ne $outputFormat "print") }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{- end }}
